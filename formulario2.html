@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Identificación de Potenciales Beneficiarios de Programas Sociales</title>
+    <script>
+        // Lista de departamentos y sus respectivos municipios
+        var municipalities = {
+            "Amazonas": ["Leticia", "Puerto Nariño"],
+            // Agrega los municipios de los otros departamentos de Colombia
+            // ...
+        };
+
+        // Función para actualizar los municipios basados en el departamento seleccionado
+        function updateMunicipalities() {
+            var department = document.getElementById("department").value;
+            var municipalitySelect = document.getElementById("municipality");
+            municipalitySelect.innerHTML = ""; // Limpiar la lista de municipios
+
+            var departmentMunicipalities = municipalities[department];
+
+            // Agregar municipios al menú desplegable
+            for (var i = 0; i < departmentMunicipalities.length; i++) {
+                var option = document.createElement("option");
+                option.text = departmentMunicipalities[i];
+                municipalitySelect.add(option);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Formulario de Identificación</h2>
+    
+    <form action="/procesar_informacion" method="post">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+
+        <label for="direccion">Dirección:</label>
+        <input type="text" id="direccion" name="direccion" required><br><br>
+
+        <label for="ingresos">Ingresos mensuales:</label>
+        <input type="number" id="ingresos" name="ingresos" required><br><br>
+
+        <label>Estado Civil:</label><br>
+        <input type="radio" id="soltero" name="estado_civil" value="soltero">
+        <label for="soltero">Soltero</label>
+        <input type="radio" id="casado" name="estado_civil" value="casado">
+        <label for="casado">Casado</label>
+        <input type="radio" id="viudo" name="estado_civil" value="viudo">
+        <label for="viudo">Viudo</label>
+        <input type="radio" id="divorciado" name="estado_civil" value="divorciado">
+        <label for="divorciado">Divorciado</label><br><br>
+
+        <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento"><br><br>
+
+        <label for="correo">Correo Electrónico:</label>
+        <input type="email" id="correo" name="correo"><br><br>
+
+        <label for="telefono">Teléfono:</label>
+        <input type="tel" id="telefono" name="telefono"><br><br>
+
+        <label for="contrasena">Contraseña:</label>
+        <input type="password" id="contrasena" name="contrasena"><br><br>
+
+        <label for="condiciones_vida">Condiciones de vida:</label>
+        <textarea id="condiciones_vida" name="condiciones_vida" rows="4" cols="50"></textarea><br><br>
+
+        <label for="otros_datos">Otros datos relevantes:</label>
+        <textarea id="otros_datos" name="otros_datos" rows="4" cols="50"></textarea><br><br>
+
+        <label for="departamento">Selecciona un departamento:</label>
+        <select id="departamento" onchange="updateMunicipalities()">
+            <option value="Amazonas">Amazonas</option>
+            <option value="Amazonas">antioquia</option>
+            <option value="Amazonas">arauca</option>
+            <option value="Amazonas">atlantico</option>
+            <option value="Amazonas">bolivar</option>
+            <option value="Amazonas">boyaca</option>
+            <option value="Amazonas">caldas</option>
+            <option value="Amazonas">caqueta</option>
+            <option value="Amazonas">casanare</option>
+            <option value="Amazonas">cauca</option>
+            <option value="Amazonas">cesar</option>
+            <option value="Amazonas">choco</option>
+            <option value="Amazonas">cordoba</option>
+            <option value="Amazonas">cundinamarca</option>
+            <option value="Amazonas">guainia</option>
+            <option value="Amazonas">guaviare</option>
+            <option value="Amazonas">huila</option>
+            <option value="Amazonas">guajira</option>
+            <option value="Amazonas">magdalena</option>
+            <option value="Amazonas">meta</option>
+            <option value="Amazonas">nariño</option>
+            <option value="Amazonas">norte de santander</option>
+            <option value="Amazonas">putumayo</option>
+            <option value="Amazonas">quindio</option>
+            <option value="Amazonas">risaralda</option>
+            <option value="Amazonas">san andres y providencia</option>
+            <option value="Amazonas">santander</option>
+            <option value="Amazonas">sucre</option>
+            <option value="Amazonas">tolima</option>
+            <option value="Amazonas">valle del cauca</option>
+            <option value="Amazonas">vaupez</option>
+            <option value="Amazonas">vichada</option>
+            <option value="Amazonas">bogota distrito capital</option>
+          
+        </select>
+        <br><br>
+
+        <label for="municipio">Selecciona un municipio:</label>
+        <select id="municipio">
+            <!-- Aquí se cargarán dinámicamente los municipios -->
+        </select>
+        <br><br>
+
+        <label for="busqueda">Búsqueda:</label>
+        <input type="search" id="busqueda" name="busqueda"><br><br>
+
+        <label for="url">URL:</label>
+        <input type="url" id="url" name="url"><br><br>
+
+        <label for="color">Color favorito:</label>
+        <input type="color" id="color" name="color"><br><br>
+
+        <label for="rango">Rango:</label>
+        <input type="range" id="rango" name="rango"><br><br>
+
+        <label for="mes">Mes y año:</label>
+        <input type="month" id="mes" name="mes"><br><br>
+
+        <label for="progress">Progreso:</label>
+        <progress id="progress" value="50" max="100"></progress><br><br>
+
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Identificación de Potenciales Beneficiarios de Programas Sociales</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="password"],
+        input[type="search"],
+        input[type="url"],
+        input[type="color"],
+        input[type="range"],
+        input[type="month"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script>
+        // Aquí permanece tu script para los departamentos y municipios
+    </script>
+</head>
+<body>
+    <h2>Formulario de Identificación</h2>
+    
+    <form action="/procesar_informacion" method="post">
+        <!-- Todo tu formulario HTML -->
+    </form>
+</body>
+</html>
