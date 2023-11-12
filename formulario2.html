@@ -1,47 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Identificación de Potenciales Beneficiarios de Programas Sociales</title>
-    <script>
-        // Lista de departamentos y sus respectivos municipios
-        var municipalities = {
-            "Amazonas": ["Leticia", "Puerto Nariño"],
-            // Agrega los municipios de los otros departamentos de Colombia
-            // ...
-        };
-
-        // Función para actualizar los municipios basados en el departamento seleccionado
-        function updateMunicipalities() {
-            var department = document.getElementById("department").value;
-            var municipalitySelect = document.getElementById("municipality");
-            municipalitySelect.innerHTML = ""; // Limpiar la lista de municipios
-
-            var departmentMunicipalities = municipalities[department];
-
-            // Agregar municipios al menú desplegable
-            for (var i = 0; i < departmentMunicipalities.length; i++) {
-                var option = document.createElement("option");
-                option.text = departmentMunicipalities[i];
-                municipalitySelect.add(option);
-            }
-        }
-    </script>
-</head>
 <body>
-    <h2>Formulario de Identificación</h2>
-    
+    <title>Identificación de Potenciales Beneficiarios de Programas Sociales</title>
+
     <form action="/procesar_informacion" method="post">
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required><br><br>
 
-        <label for="direccion">Dirección:</label>
+        <img src="https://caracoltv.brightspotcdn.com/dims4/default/d413f5e/2147483647/strip/true/crop/1000x716+0+0/resize/1000x716!/format/webp/quality/90/?url=https%3A%2F%2Fcaracol-brightspot.s3-us-west-2.amazonaws.com%2Fassets%2Fbluradio%2Fsisben_foto_sisben_1.jpg" alt="Imagen del formulario" style="width: 30%;">
+    
+        <h2>Formulario del Sistema de Identificación de Potenciales Beneficiarios de Programas Sociales</h2>
+        
+        <div>
+            <label for="primerNombre">Primer nombre:</label>
+            <input type="text" id="primerNombre" name="primerNombre" required>
+        </div>
+    
+        <div>
+            <label for="segundoNombre">Segundo nombre:</label>
+            <input type="text" id="segundoNombre" name="segundoNombre" required>
+        </div>
+    
+        <div>
+            <label for="primerApellido">Primer apellido:</label>
+            <input type="text" id="primerApellido" name="primerApellido" required>
+        </div>
+    
+        <div>
+            <label for="segundoApellido">Segundo apellido:</label>
+            <input type="text" id="segundoApellido" name="segundoApellido" required>
+        </div>
+    <br>
+    
+    </form>
+    <form action="/procesar_informacion" method="post">
+
+<div>
+                    <label for="ingresos">numero de telefono:</label>
+        <input type="number" id="ingresos" name="ingresos" required><br><br>
+    </div>
+    <div>
+        <label for="direccion">Dirección de residencia:</label>
         <input type="text" id="direccion" name="direccion" required><br><br>
+    </div>
 
+    <div>
         <label for="ingresos">Ingresos mensuales:</label>
         <input type="number" id="ingresos" name="ingresos" required><br><br>
-
+    </div>
+</form>
         <label>Estado Civil:</label><br>
-        <input type="radio" id="soltero" name="estado_civil" value="soltero">
         <label for="soltero">Soltero</label>
         <input type="radio" id="casado" name="estado_civil" value="casado">
         <label for="casado">Casado</label>
@@ -50,14 +57,37 @@
         <input type="radio" id="divorciado" name="estado_civil" value="divorciado">
         <label for="divorciado">Divorciado</label><br><br>
 
+        <div>
+            <form action="/procesar_informacion" method="post">
+                <label for="genero">Selecciona tu género:</label><br>
+                <select id="genero" name="genero" multiple>
+                    <option value="masculino">Masculino</option>
+                    <option value="femenino">Femenino</option>
+                    <option value="transgenero">Transgénero</option>
+                    <option value="noBinario">Género no binario</option>
+                    <option value="generoFluido">Género fluido</option>
+                    <option value="agenero">Agénero</option>
+                    <option value="bigenero">Bigénero</option>
+                </select>
+            </form>
+
+            <label>Numero de personas a cargo:</label><br>
+            <label for="soltero">de 1 a 2 personas</label>
+            <input type="radio" id="casado" name="estado_civil" value="casado">
+            <label for="casado">3 personas</label>
+            <input type="radio" id="viudo" name="estado_civil" value="viudo">
+            <label for="viudo">4 o mas personas</label>
+            <input type="radio" id="divorciado" name="estado_civil" value="divorciado">
+            <label for="divorciado">ninguna</label><br><br>
+            
+        </div>
+        
+
         <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
         <input type="date" id="fecha_nacimiento" name="fecha_nacimiento"><br><br>
 
         <label for="correo">Correo Electrónico:</label>
         <input type="email" id="correo" name="correo"><br><br>
-
-        <label for="telefono">Teléfono:</label>
-        <input type="tel" id="telefono" name="telefono"><br><br>
 
         <label for="contrasena">Contraseña:</label>
         <input type="password" id="contrasena" name="contrasena"><br><br>
@@ -107,25 +137,39 @@
         </select>
         <br><br>
 
-        <label for="municipio">Selecciona un municipio:</label>
-        <select id="municipio">
-            <!-- Aquí se cargarán dinámicamente los municipios -->
-        </select>
-        <br><br>
 
-        <label for="busqueda">Búsqueda:</label>
-        <input type="search" id="busqueda" name="busqueda"><br><br>
-
-        <label for="url">URL:</label>
+        <label for="url">URL de red social:</label>
         <input type="url" id="url" name="url"><br><br>
 
-        <label for="color">Color favorito:</label>
-        <input type="color" id="color" name="color"><br><br>
 
-        <label for="rango">Rango:</label>
-        <input type="range" id="rango" name="rango"><br><br>
+        <!DOCTYPE html>
+        <html lang="es">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Rango de Edad</title>
+        </head>
+        <body>
+        
+        <label for="rango">selecciona el rango de horas trabajadas por semana</label>
+        <input type="range" id="rango" name="rango" min="18" max="100" value="1" onchange="mostrarRango()">
+        <br><br>
+        
+        <p>rango de horas seleccionada: <span id="edadMostrada">1</span> horas</p>
+        <br>
+        <script>
+          function mostrarRango() {
+            var valorRango = document.getElementById("rango").value;
+            
+            document.getElementById("edadMostrada").innerHTML = valorRango;
+          }
+        </script>
+        
+        </body>
+        </html>
+        
 
-        <label for="mes">Mes y año:</label>
+        <label for="mes">seleccione desde que fecha vive en la direccion actual:</label>
         <input type="month" id="mes" name="mes"><br><br>
 
         <label for="progress">Progreso:</label>
@@ -198,14 +242,12 @@
         }
     </style>
     <script>
-        // Aquí permanece tu script para los departamentos y municipios
     </script>
 </head>
 <body>
-    <h2>Formulario de Identificación</h2>
     
     <form action="/procesar_informacion" method="post">
-        <!-- Todo tu formulario HTML -->
     </form>
 </body>
 </html>
+<br>
